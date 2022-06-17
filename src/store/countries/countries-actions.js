@@ -19,7 +19,6 @@ export const setError = (error) => ({
 });
 
 //thunk
-
 export const loadCountries = () => (dispatch, getState, {client, api}) => {
     dispatch(setLoading());
     client.get(api.ALL_COUNTRIES)
