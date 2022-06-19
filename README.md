@@ -8,4 +8,4 @@ This is a solution to the [REST Countries API with color theme switcher challeng
 [x] Фильтрация стран по поиску
 [x] Фильтрация стран по региону
 [x] Получение расширенной информации о выбранной стране
-[] Получение списка соседей
+[x] Получение списка соседей
