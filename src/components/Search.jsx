@@ -38,7 +38,7 @@ export const Search = () => {
     const search = useSelector(selectSearch);
 
     const handleSearch = (e) => {
-        debugger
+        // debugger
         dispatch(setSearch(e.target.value))
     }
 

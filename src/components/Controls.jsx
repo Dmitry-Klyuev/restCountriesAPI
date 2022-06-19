@@ -1,17 +1,17 @@
 import styled from 'styled-components';
+import {useSelector, useDispatch} from 'react-redux'
 
 import { Search } from './Search';
 import { CustomSelect } from './CustomSelect';
-import {useDispatch, useSelector} from "react-redux";
-import {selectRegion} from "../store/controls/controls-selectors";
-import {setRegion} from "../store/controls/controls-actions";
+import { selectRegion } from '../store/controls/controls-selectors';
+import { setRegion } from '../store/controls/controls-actions';
 
 const optionsMap = {
-  'Africa': { value: 'Africa', label: 'Africa' },
-  'America': { value: 'America', label: 'America' },
-  'Asia': { value: 'Asia', label: 'Asia' },
-  'Europe': { value: 'Europe', label: 'Europe' },
-  'Oceania': { value: 'Oceania', label: 'Oceania' },
+    'Africa': { value: 'Africa', label: 'Africa' },
+    'America': { value: 'America', label: 'America' },
+    'Asia': { value: 'Asia', label: 'Asia' },
+    'Europe': { value: 'Europe', label: 'Europe' },
+    'Oceania': { value: 'Oceania', label: 'Oceania' },
 }
 const options = Object.values(optionsMap);
 
@@ -29,22 +29,23 @@ const Wrapper = styled.div`
 
 export const Controls = () => {
     const dispatch = useDispatch();
-    const region = useSelector(selectRegion)
+    const region = useSelector(selectRegion);
 
-    const handlerSelect = (reg) => {
+    const handleSelect = (reg) => {
         dispatch(setRegion(reg?.value || ''))
     }
-  return (
-    <Wrapper>
-      <Search />
-      <CustomSelect
-        options={options}
-        placeholder="Filter by Region"
-        isClearable
-        isSearchable={false}
-        value={region[region]}
-        onChange={handlerSelect}
-      />
-    </Wrapper>
-  );
+
+    return (
+        <Wrapper>
+            <Search />
+            <CustomSelect
+                options={options}
+                placeholder="Filter by Region"
+                isClearable
+                isSearchable={false}
+                value={region && optionsMap[region]}
+                onChange={handleSelect}
+            />
+        </Wrapper>
+    );
 };
