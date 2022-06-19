@@ -15,3 +15,5 @@ export const store = createStore(rootReducer, composeEnhancers(
         })
     )
 ))
+
+window.store = store;

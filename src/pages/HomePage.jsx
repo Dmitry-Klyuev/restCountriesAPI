@@ -1,36 +1,38 @@
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import {useDispatch, useSelector} from 'react-redux';
+import {useEffect} from 'react'
 
-import {List} from '../components/List';
-import {Card} from '../components/Card';
-import {Controls} from '../components/Controls';
-import {useDispatch, useSelector} from "react-redux";
-import {selectAllCountries, selectCountriesInfo, selectVisibleCountries} from "../store/countries/countries-selectors";
-import {useEffect} from "react";
-import {loadCountries} from "../store/countries/countries-actions";
-import {selectSearch} from "../store/controls/controls-selectors";
+import { List } from '../components/List';
+import { Card } from '../components/Card';
+import { Controls } from '../components/Controls';
+import { selectVisibleCountries, selectCountriesInfo } from '../store/countries/countries-selectors';
+import { loadCountries } from '../store/countries/countries-actions';
+import {selectSearch} from '../store/controls/controls-selectors'
 
 export const HomePage = () => {
     const navigate = useNavigate();
 
     const dispatch = useDispatch();
-    const countries = useSelector(selectAllCountries)
-    const {status, error, qty} = useSelector(selectCountriesInfo);
     const search = useSelector(selectSearch);
+    const countries = useSelector(state => selectVisibleCountries(state, {search}));
+    const {status, error, qty} = useSelector(selectCountriesInfo);
 
     useEffect(() => {
         if (!qty) {
             dispatch(loadCountries());
         }
-    }, [ dispatch]);
+    }, [qty, dispatch]);
 
     return (
         <>
-            <Controls/>
+            <Controls />
+
             {error && <h2>Can't fetch data</h2>}
             {status === 'loading' && <h2>Loading...</h2>}
+
             {status === 'received' && (
                 <List>
-                    {countries.data.map((c) => {
+                    {countries.map((c) => {
                         const countryInfo = {
                             img: c.flags.png,
                             name: c.name,
@@ -58,8 +60,8 @@ export const HomePage = () => {
                             />
                         );
                     })}
-                </List>)}
-
+                </List>
+            )}
         </>
     );
 };

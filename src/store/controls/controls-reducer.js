@@ -9,7 +9,7 @@ export const controlsReducer = (state= initialState, action) => {
     switch (action.type){
         case SET_SEARCH : {
             return {...state,
-            search: action.search,
+            search: action.payload,
             }
         }
 
