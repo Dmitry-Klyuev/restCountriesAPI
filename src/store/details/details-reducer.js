@@ -1,4 +1,4 @@
-import {SET_COUNTRY, SET_ERROR, SET_LOADING} from "./details-actions";
+import {CLEAR_DETAILS, SET_COUNTRY, SET_ERROR, SET_LOADING} from "./details-actions";
 
 const initialState = {
     currentCountry: null,
@@ -26,6 +26,8 @@ export const detailsReducer = (state = initialState, action) => {
                     error: null,
                     status: 'loading',
                 };
+            case CLEAR_DETAILS:
+                return initialState;
             default:
                 return state;
         }

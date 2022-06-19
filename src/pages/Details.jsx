@@ -6,7 +6,7 @@ import {Info} from '../components/Info';
 import {useDispatch, useSelector} from "react-redux";
 import {selectDetails} from "../store/details/details-selector";
 import {useEffect} from "react";
-import {loadCountryByName} from "../store/details/details-actions";
+import {clearDetails, loadCountryByName} from "../store/details/details-actions";
 
 
 export const Details = () => {
@@ -16,6 +16,9 @@ export const Details = () => {
     const {currentCountry, error, status} = useSelector(selectDetails);
     useEffect(() => {
         dispatch(loadCountryByName(name));
+        return() => {
+            dispatch(clearDetails())
+        }
     }, [name, dispatch]);
     return (
         <div>
