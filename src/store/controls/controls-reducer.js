@@ -1,4 +1,4 @@
-import {SET_SEARCH} from "./controls-actions";
+import {SET_REGION, SET_SEARCH} from "./controls-actions";
 
 const initialState = {
     search: '',
@@ -10,6 +10,11 @@ export const controlsReducer = (state= initialState, action) => {
         case SET_SEARCH : {
             return {...state,
             search: action.payload,
+            }
+        }
+        case SET_REGION:{
+            return {...state,
+            region: action.payload,
             }
         }
 
