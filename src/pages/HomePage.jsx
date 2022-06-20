@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import {useEffect} from 'react'
-
 import { List } from '../components/List';
 import { Card } from '../components/Card';
 import { Controls } from '../components/Controls';
@@ -11,7 +10,6 @@ import {selectControls, selectSearch} from '../store/controls/controls-selectors
 
 export const HomePage = () => {
     const navigate = useNavigate();
-
     const dispatch = useDispatch();
     const {search, region} = useSelector(selectControls);
     const countries = useSelector(state => selectVisibleCountries(state, {search, region}));
