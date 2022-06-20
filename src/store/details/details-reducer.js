@@ -1,4 +1,4 @@
-import {CLEAR_DETAILS, SET_COUNTRY, SET_ERROR, SET_LOADING, SET_NEIGHBORS, setNeighbors} from "./details-actions";
+import {CLEAR_DETAILS, SET_COUNTRY, SET_ERROR, SET_LOADING, SET_NEIGHBORS} from "./details-actions";
 
 const initialState = {
     currentCountry: null,

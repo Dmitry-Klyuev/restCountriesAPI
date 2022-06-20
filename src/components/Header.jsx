@@ -6,7 +6,7 @@ import { IoMoon, IoMoonOutline } from 'react-icons/io5';
 import { Container } from './Container';
 import {useDispatch, useSelector} from "react-redux";
 import {setTheme} from "../store/theme/theme-actions";
-import {clearControls, clearFilter} from "../store/controls/controls-actions";
+import {clearControls} from "../store/controls/controls-actions";
 
 const HeaderEl = styled.header`
   box-shadow: var(--shadow);
