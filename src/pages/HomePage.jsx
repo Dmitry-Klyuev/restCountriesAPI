@@ -6,7 +6,7 @@ import { Card } from '../components/Card';
 import { Controls } from '../components/Controls';
 import { selectVisibleCountries, selectCountriesInfo } from '../store/countries/countries-selectors';
 import { loadCountries } from '../store/countries/countries-actions';
-import {selectControls, selectSearch} from '../store/controls/controls-selectors';
+import {selectControls} from '../store/controls/controls-selectors';
 
 export const HomePage = () => {
     const navigate = useNavigate();
